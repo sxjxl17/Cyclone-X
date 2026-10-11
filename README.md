@@ -1,3 +1,3 @@
 # CycloneX
 
-LINK - cyclonex-zeta.vercel.app
+LINK - https://cyclonex-zeta.vercel.app/
