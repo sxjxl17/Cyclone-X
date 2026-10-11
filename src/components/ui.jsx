@@ -88,7 +88,7 @@ export function Timeline({ max = TIMELINE.length - 1 }) {
   );
 }
 
-/* Live clock: ticks every second in the viewer's own time zone, with UTC alongside. */
+
 export function Clock({ className = "" }) {
   const [d, setD] = useState(() => new Date());
   useEffect(() => { const i = setInterval(() => setD(new Date()), 1000); return () => clearInterval(i); }, []);
@@ -101,7 +101,7 @@ export function Clock({ className = "" }) {
   );
 }
 
-/* Pick which cyclone the pages show. */
+
 export function CycloneSelect() {
   const { sid, setSid } = useStorm();
   return (
