@@ -1,9 +1,4 @@
-"""Model-window cropping, centre-coordinate bookkeeping and the (only) augmentations used.
-Everything here is pure numpy so the centre target is verifiably transformed together with the image.
 
-Augmentations (train only): (1) random window shift (centre keeps exact pixel position), (2) rot90 k in 0..3
-(rotation preserves cyclonic sense; flips are NOT used because they reverse it), (3) small additive brightness
-offset in normalised units (calibration-drift robustness). Val/test: deterministic shift only."""
 import hashlib
 
 import numpy as np
