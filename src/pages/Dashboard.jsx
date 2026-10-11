@@ -63,7 +63,7 @@ export default function Dashboard() {
         </Panel>
         {live && <Panel title="Prediction confidence">
           <div className="flex items-center gap-3"><ConfGauge value={p.conf} size={120} /><div className="text-sm text-slate-300">{p.t <= 0 ? "Observed position, high certainty." : `Forecast at ${tLabel(p.t)}.`}</div></div>
-          <div className="mt-3"><ConfBars parts={CONF_PARTS} /></div>
+          <div className="mt-3"><ConfBars parts={CONF_PARTS} /></div> 
         </Panel>}
         <Panel title="Monitored worldwide" sub="Select a cyclone to see its details">
           <ul className="-my-1 divide-y divide-line/60">{SYSTEM_LIST.map((x) => (
