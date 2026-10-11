@@ -1,5 +1,4 @@
-"""Local inference. Uses the SAME preprocessing function as training (process_observation with require_label=False)
-and the checkpoint's own normalisation stats / threshold."""
+
 from pathlib import Path
 
 import numpy as np
