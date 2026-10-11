@@ -4,7 +4,7 @@ import Shell from "./components/Shell.jsx";
 import Overview from "./pages/Overview.jsx";
 import Imagery from "./pages/Imagery.jsx";
 import Prediction from "./pages/Prediction.jsx";
-import Dashboard from "./pages/Dashboard.jsx";
+import Dashboard from "./pages/Dashboard.jsx"; 
 import Warnings from "./pages/Warnings.jsx";
 
 export default function App() {
