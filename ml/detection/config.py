@@ -5,11 +5,11 @@ import copy
 from ml.utils.config import SYNTH_TAG, ConfigError, load_config, resolve_path
 
 DEFAULTS = {
-    "mode": "detection",                  # detection | localization_only (positives only; used when no verified negatives exist)
-    "window_px": 96,                      # model input window cut from the processed (e.g. 112 px) array
-    "max_shift_px": 8,                    # random shift (train) / seeded deterministic shift (val/test) of the window
+    "mode": "detection",                 
+    "window_px": 96,                      
+    "max_shift_px": 8,                    
     "negatives_index": "ml/data/metadata/negatives_index.csv",
-    "min_negative_track_dist_km": 1000.0, # a negative must be >= this far from ANY tracked system (recorded per sample)
+    "min_negative_track_dist_km": 1000.0,
     "dataset_version": "det-v1",
     "preprocessing_version": "step1-preproc-v1",
     "output_dir": "outputs/detection",
