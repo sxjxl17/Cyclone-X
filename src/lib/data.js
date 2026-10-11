@@ -12,15 +12,15 @@ export { default as V } from "../data/verification.json";
 export const PRIMARY_ID = "ARB-02";
 
 const H = [0, 6, 12, 24, 36, 48, 60, 72];
-const PRE = Array.from({ length: 21 }, (_, i) => -720 + 24 * i);   // 30 days back to 10 days back: no cyclone yet
-const EARLY = [-216, -192, -168, -144, -120, -96, -72, -48];       // daily, from genesis
+const PRE = Array.from({ length: 21 }, (_, i) => -720 + 24 * i);   
+const EARLY = [-216, -192, -168, -144, -120, -96, -72, -48];       
 const sm = (x) => { const t = Math.max(0, Math.min(1, x)); return t * t * (3 - 2 * t); };
 const press = (w) => Math.round(1010 - Math.pow(w / 8.5, 1.55));
 const km = (a, b) => { const p1 = a[1] * RAD, p2 = b[1] * RAD, dl = (b[0] - a[0]) * RAD, h = Math.sin((p2 - p1) / 2) ** 2 + Math.cos(p1) * Math.cos(p2) * Math.sin(dl / 2) ** 2; return 2 * 6371 * Math.asin(Math.sqrt(h)); };
 const stageOf = (w) => (w < 64 ? "developing" : "mature");
 const lat1 = (v) => `${Math.abs(v).toFixed(1)}°${v >= 0 ? "N" : "S"}`, lon1 = (v) => `${Math.abs(v).toFixed(1)}°${v >= 0 ? "E" : "W"}`;
 
-/* Builds the full record for one cyclone: 30-day timeline (history, now, forecast), landfall, peak and confidence. */
+
 function assemble(m, fcst, past, landfall) {
   const now = fcst[0], hdg = bearing([now.lon, now.lat], [fcst[1].lon, fcst[1].lat]), sp = now.speed;
   const pt = (t, lon, lat, wind, extra = {}) => ({ t, lon, lat, wind, pres: press(wind), dir: Math.round(hdg), speed: sp, conf: 100, exists: true, sh: m.sh, kind: "obs", ...extra });
@@ -58,7 +58,7 @@ SYS.forEach((s) => { BUILT[s.id] = buildOther(s); });
 export const SYSTEM_LIST = Object.values(BUILT).map((b) => { const n = b.forecast[0]; return { id: b.m.id, name: b.m.name, basin: b.m.basin, lon: n.lon, lat: n.lat, wind: n.wind, sh: b.m.sh, move: b.m.move, stage: stageOf(n.wind) }; });
 export const NOW_I = PRE.length + EARLY.length + 4;
 
-/* The selected cyclone. These are live bindings: selectSystem() swaps them and the UI re-renders. */
+
 export let SID, STORM, TIMELINE, FORECAST, LAND, PEAK, CONF_PARTS, CONF_ALL, LAND_NAME, LAND_SHORT;
 export const selectSystem = (id) => {
   const b = BUILT[id]; SID = id; STORM = b.storm; TIMELINE = b.timeline; FORECAST = b.forecast; LAND = b.land; PEAK = b.peak;
@@ -67,7 +67,7 @@ export const selectSystem = (id) => {
 selectSystem(PRIMARY_ID);
 export const frameFor = (p) => ANALYSIS.frames[p.t >= 0 ? 4 : p.t >= -6 ? 3 : p.t >= -12 ? 2 : p.t >= -18 ? 1 : 0];
 
-/* Real-time helpers: everything is computed from the viewer's clock, in the viewer's time zone. */
+
 export const tzName = (d = new Date()) => (new Intl.DateTimeFormat(undefined, { timeZoneName: "short" }).formatToParts(d).find((p) => p.type === "timeZoneName") || {}).value || "";
 const slot = () => Math.floor(Date.now() / 1800000) * 1800000;
 export const stamp = (t) => { const d = new Date(slot() + t * 3600000); return `${d.toLocaleDateString("en-GB", { day: "2-digit", month: "short" })} ${d.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit", hour12: false })} ${tzName(d)}`; };
