@@ -1,7 +1,4 @@
-"""Detection (+ localization) CNNs. Trained FROM SCRATCH on purpose: ImageNet-pretrained RGB filters do not map to
-1-3 aligned brightness-temperature channels, and with few cyclone events a large backbone mainly overfits.
-Channel count is a constructor argument, so IR-only / IR+WV / VIS+IR+WV models are the same code.
-Output of forward(): {"logit": [B], "centre": [B,2] (x,y normalised to the input window) or None}."""
+
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
