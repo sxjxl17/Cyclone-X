@@ -1,4 +1,4 @@
-"""Detection dataset. Normalisation = TRAIN-groups-only stats; augmentation only when train=True."""
+
 import json
 
 import numpy as np
