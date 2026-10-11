@@ -15,7 +15,7 @@ export const useStorm = () => useContext(Ctx);
 const LOAD = Date.now();
 
 export function StormProvider({ children }) {
-  const [band, setBand] = useState("visible");
+  const [band, setBand] = useState("visible"); 
   const [ti, setTi] = useState(NOW_I);
   const [sid, setSidState] = useState(PRIMARY_ID);
   const [layers, setLayers] = useState(LAYERS0);
