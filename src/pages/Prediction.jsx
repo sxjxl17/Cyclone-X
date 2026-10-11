@@ -20,7 +20,7 @@ function Compass({ dir }) {
       <text x="80" y="84" textAnchor="middle" fontSize="0" fill="#fff">{dir}</text>
     </svg>
   );
-}
+} 
 
 export default function Prediction() {
   const { sid } = useStorm(), home = () => FORECAST.indexOf(LAND || PEAK);
