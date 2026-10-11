@@ -1,4 +1,4 @@
-"""Standard prediction record + model metadata. Scores are raw sigmoid model scores, NOT calibrated confidence."""
+
 import time
 
 PRED_KEYS = ("event_id", "timestamp", "source", "prediction", "probability", "probability_is_calibrated",
