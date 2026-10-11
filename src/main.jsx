@@ -5,7 +5,7 @@ import App from "./App.jsx";
 import { StormProvider } from "./state.jsx";
 import "./index.css";
 
-// Shows any crash on screen instead of a blank page.
+
 class Boundary extends React.Component {
   state = { err: null };
   static getDerivedStateFromError(err) { return { err }; }
