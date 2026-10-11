@@ -1,4 +1,4 @@
-"""Event-wise (never image-wise) train/val/test split + train-only normalisation statistics."""
+
 import numpy as np
 import pandas as pd
 
