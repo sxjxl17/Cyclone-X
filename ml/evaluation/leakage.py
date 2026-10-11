@@ -1,4 +1,4 @@
-"""Data-leakage guards. Fatal problems raise LeakageError (we fail loudly, never continue)."""
+
 import pandas as pd
 
 from ml.utils.config import resolve_path
