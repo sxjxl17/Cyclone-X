@@ -19,3 +19,4 @@ def classification_metrics(y_true, y_pred, class_names):
                       for i, n in enumerate(class_names)},
         "labels": list(class_names), "confusion_matrix": cm.tolist(),
     }
+ 
