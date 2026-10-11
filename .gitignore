@@ -5,7 +5,7 @@ venv/
 .env
 .ipynb_checkpoints/
 .DS_Store
-# data & artefacts are never committed
+
 ml/data/raw/*
 ml/data/processed/*
 ml/data/metadata/*
