@@ -2,13 +2,9 @@ import React, { useEffect, useRef } from "react";
 import { fieldAt } from "../lib/wind";
 import { RAD } from "../lib/geo";
 
-/* Animated wind particles drawn over the homepage map photo.
-   The photo is 1424x748 and shown with object-cover, anchored right. We work in image pixels so the flow
-   stays locked to the picture at any screen size. Pixels map to approximate lon/lat so the same wind field
-   used elsewhere in the app (trades, westerlies, monsoon, cyclone vortices) drives the particles. */
 const IW = 1424, IH = 748;
 const LON = (x) => 77 + 0.14 * (x - 780), LAT = (y) => 8 + 0.1217 * (490 - y);
-/* the three cyclones visible in the photo (image px), strength k and hemisphere h */
+
 const STORMS = [
   { x: 685, y: 445, k: 1.0, h: 1 },
   { x: 1197, y: 420, k: 1.4, h: 1 },
