@@ -130,7 +130,7 @@ export default function SatelliteMap({ show, hero }) {
       map.addLayer({ id: "fcpts", type: "circle", source: "fcpts", paint: { "circle-radius": 3.5, "circle-color": ["get", "color"], "circle-stroke-color": "#040a26", "circle-stroke-width": 1 } });
       ref.current.ready = true; safe();
     });
-    return () => { ref.current.wind.destroy(); ro.disconnect(); map.remove(); };
+    return () => { ref.current.wind?.destroy(); ro.disconnect(); map.remove(); };
   }, []);
   useEffect(() => { if (ref.current.ready) safe(); }, [band, ti, sid, show.cloud, show.wind, show.track, show.cone, show.rings, show.risk, show.labels]);
   useEffect(() => { if (view && ref.current.ready) ref.current.map.flyTo({ center: view.center, zoom: view.zoom, duration: 1400 }); }, [view]);
