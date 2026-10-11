@@ -1,5 +1,4 @@
-"""Error analysis (TP/FP/TN/FN examples + data-derived error statistics), Grad-CAM panels, experiment comparison.
-All statements in error_summary.json are computed from the actual predictions - no narrative causes are invented."""
+
 import numpy as np
 import pandas as pd
 
@@ -20,8 +19,8 @@ def _raw_window(ds, i, ch_idx=0):
 
 def _pick(df, cat, k):
     d = df[df.cat == cat]
-    if cat == "FN": d = d.sort_values("score")                    # most confidently missed first
-    elif cat == "FP": d = d.sort_values("score", ascending=False) # most confident false alarms first
+    if cat == "FN": d = d.sort_values("score")                    
+    elif cat == "FP": d = d.sort_values("score", ascending=False) 
     elif cat == "TP": d = d.sort_values("score", ascending=False)
     else: d = d.sort_values("score")
     return d.head(k).index.tolist()
