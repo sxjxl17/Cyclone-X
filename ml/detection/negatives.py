@@ -1,6 +1,4 @@
-"""Negative (no-cyclone) sample eligibility. We never invent negatives: a candidate window is accepted ONLY
-if a real best-track table proves no tracked system (ANY intensity, incl. depressions/disturbances listed in the
-track source) is within `min_dist_km` of the whole window within +-`time_window_h`. No track table => refuse."""
+
 import numpy as np
 import pandas as pd
 
