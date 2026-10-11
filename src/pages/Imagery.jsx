@@ -12,7 +12,7 @@ const dvorak = (w) => { const t = Object.keys(DV).reduce((a, b) => (Math.abs(DV[
 
 export default function Imagery() {
   const { band, setBand, ti, setTi, layers, toggle } = useStorm(), prov = getProvider(), B = BANDS[band], p = TIMELINE[ti], live = p.exists !== false, fr = frameFor(p);
-  useEffect(() => { if (ti > NOW_I) setTi(NOW_I); }, []); // satellite frames only exist up to now
+  useEffect(() => { if (ti > NOW_I) setTi(NOW_I); }, []); 
   const readout = band === "infrared" ? ["Coldest cloud top", `${fr.ctt} °C`] : band === "visible" ? ["Eye diameter", fr.eye && p.wind >= 64 ? `${fr.eye} km` : "No eye yet"] : ["Core moisture", `${Math.min(99, 60 + (fr.sym / 3 | 0))}%`];
   const rows = TIMELINE.slice(NOW_I - 4, NOW_I + 1), show = Object.fromEntries(Object.entries(layers).map(([k, v]) => [k, v.on]));
   return (
