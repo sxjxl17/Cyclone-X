@@ -1,6 +1,4 @@
-"""Build the detection dataset: positives from the Step-1 processed index, negatives ONLY from a verified negatives
-index. Splits are by GROUP (cyclone event; negatives inherit the split of the cyclone scene they came from, else their own
-scene group), never by image. Balancing is done with a weighted loss, never by duplicating images."""
+
 import json
 
 import numpy as np
