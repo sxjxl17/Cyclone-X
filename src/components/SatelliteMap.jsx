@@ -7,7 +7,7 @@ import { TIMELINE, FORECAST, NOW_I, LAND, LAND_SHORT, D, SYSTEM_LIST, SID } from
 import { ring, cone, RADII, cat, TC, COL, fmtPos, classify } from "../lib/geo";
 import { startWind, windLines } from "../lib/wind";
 
-/* Basemap: MapTiler Satellite when VITE_MAPTILER_KEY is set, otherwise Esri World Imagery. */
+
 const KEY = import.meta.env.VITE_MAPTILER_KEY;
 const SAT_SRC = KEY
   ? { type: "raster", tiles: [`https://api.maptiler.com/tiles/satellite-v2/{z}/{x}/{y}.jpg?key=${KEY}`], tileSize: 512, maxzoom: 18 }
@@ -29,7 +29,7 @@ const VIEWS = { Global: { center: [45, 16], zoom: 1.9 }, Region: { center: [72, 
 const fc = (features) => ({ type: "FeatureCollection", features });
 const ft = (geometry, properties = {}) => ({ type: "Feature", geometry, properties });
 const ringsGeo = (p) => fc(p.exists === false ? [] : RADII(p.wind).map(([kt, km, color]) => ft({ type: "Polygon", coordinates: [ring([p.lon, p.lat], km, 0.22, p.dir)] }, { color })));
-/* geometry for whichever cyclone is selected */
+
 const staticGeo = () => {
   const pts = FORECAST.map((p) => [p.lon, p.lat]), obs = TIMELINE.filter((q) => q.exists !== false && q.t <= 0), land = LAND ? [LAND.lon, LAND.lat] : null;
   return {
@@ -41,7 +41,7 @@ const staticGeo = () => {
     risk: fc(land ? D.risk.map((z) => ft({ type: "Polygon", coordinates: [ring(land, z.km)] }, { color: z.c })) : []),
   };
 };
-/* a fresh style object per map, so two maps never share (and mutate) the same one */
+
 const makeStyle = () => ({ version: 8, sources: { sat: { ...SAT_SRC, tiles: [...SAT_SRC.tiles] } }, layers: [{ id: "bg", type: "background", paint: { "background-color": "#040a26" } }, { id: "sat", type: "raster", source: "sat" }] });
 
 function buildMarkers(map, R, hero) {
