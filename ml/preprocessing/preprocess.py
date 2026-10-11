@@ -1,13 +1,4 @@
-"""Documented, reproducible transformations (see docs/PREPROCESSING.md).
 
-Per observation, in order:
- 1. label  : class from max sustained wind (missing wind -> rejected, never imputed)
- 2. crop   : centre crop to data.crop_size (grid is storm-centred)
- 3. range  : pixels outside physical valid_ranges -> NaN (rejected if too many)
- 4. quality: reject if NaN fraction > max_nan_frac or image constant
- 5. resample: block-mean (area) downsample by integer factor, NaN-aware
-Normalisation is NOT applied here; it is computed from TRAIN events only (create_splits).
-"""
 import warnings
 
 import numpy as np
