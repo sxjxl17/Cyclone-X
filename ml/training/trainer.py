@@ -37,7 +37,7 @@ def train_model(cfg):
     from ml.models.baseline_cnn import build_model
 
     seed_everything(cfg["seed"])
-    report = run_all_checks(cfg, fail=True)  # fail loudly before any training
+    report = run_all_checks(cfg, fail=True)  
     manifest = check_dataset_matches_config(cfg)
     out = resolve_path(cfg, "output_dir"); out.mkdir(parents=True, exist_ok=True)
     t = cfg["train"]; names = cfg["task"]["class_names"]
