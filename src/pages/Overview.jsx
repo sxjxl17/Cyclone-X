@@ -31,7 +31,7 @@ export default function Overview() {
       <section className="relative min-h-[640px] overflow-hidden">
         <div className="hero-mask absolute inset-x-0 bottom-0 h-[340px] md:inset-y-0 md:left-auto md:right-0 md:h-auto md:w-[72%]"> style={{ WebkitMaskImage: "linear-gradient(90deg, transparent 0%, #000 38%)", maskImage: "linear-gradient(90deg, transparent 0%, #000 38%)" }}><img src={`${import.meta.env.BASE_URL}imagery/hero/world-cyclones.jpg`} alt="World map showing wind flow and three tropical cyclones over the Indian and western Pacific oceans" className="h-full w-full object-cover object-right" /><HeroWind /></div>
         <div className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-[#050f36] to-transparent" />
-        <div className="relative mx-auto max-w-[1280px] px-5 pb-28 pt-16 sm:px-10">
+        <div className="relative mx-auto max-w-[1280px] px-5 pb-[380px] pt-16 sm:px-10 md:pb-28">
           <h1 className="max-w-xl font-display text-3xl font-bold uppercase leading-[1.15] tracking-wide text-white sm:text-[42px]">Cyclone intelligence from space</h1>
           <p className="mt-7 max-w-md text-[14px] leading-relaxed text-slate-300">CycloneX analyses multi-source satellite imagery to identify tropical cyclones, classify their development stage and forecast intensity, track and landfall with a stated confidence. It is built for disaster management authorities and meteorological departments who must act hours before the storm arrives. Satellite coverage is global, so every ocean basin is monitored by the same pipeline.</p>
           <div className="mt-8 flex flex-wrap gap-3">
