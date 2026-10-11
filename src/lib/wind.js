@@ -1,6 +1,6 @@
 import { RAD } from "./geo";
 
-/* Global wind field: trade easterlies, mid-latitude westerlies, the Indian monsoon flow, plus a vortex around every cyclone. */
+
 export const fieldAt = (lon, lat, vs) => {
   const a = Math.abs(lat);
   let u = a < 30 ? -4.5 * Math.sin((Math.PI * a) / 30) : a < 60 ? 7 * Math.sin((Math.PI * (a - 30)) / 30) : -2;
@@ -14,7 +14,7 @@ export const fieldAt = (lon, lat, vs) => {
   return [u, v];
 };
 
-/* Animated particles with fading trails, drawn on a canvas over the map (like a live wind map). */
+
 export function startWind(map, canvas, getVs, { count = 4000, tones } = {}) {
   const ctx = canvas.getContext("2d"), reduced = typeof matchMedia !== "undefined" && matchMedia("(prefers-reduced-motion: reduce)").matches;
   let raf = 0, run = false, frames = 0;
@@ -54,7 +54,7 @@ export function startWind(map, canvas, getVs, { count = 4000, tones } = {}) {
   };
 }
 
-/* Static global streamlines (long thin curved lines), used on the Dashboard and Imagery maps. */
+
 const LC = {};
 export const windLines = (vs, key) => {
   if (LC[key]) return LC[key];
