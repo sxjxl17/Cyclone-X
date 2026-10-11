@@ -1,4 +1,4 @@
-"""Grad-CAM for the detection logit. A visual sanity check only - it does NOT prove scientific correctness."""
+
 import torch
 import torch.nn.functional as F
 
