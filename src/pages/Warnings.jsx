@@ -3,7 +3,7 @@ import { Check, Users, Anchor, Zap, Building2, Wheat, Clock } from "lucide-react
 import { Panel, Label, Stat, PageHead } from "../components/ui";
 import { useStorm } from "../state";
 import { DECISION as DC, LAND, V, PRIMARY_ID, STORM, fmtTime, ago } from "../lib/data";
-import { classify } from "../lib/geo";
+import { classify } from "../lib/geo"; 
 
 const SEV = {
   evacuate: { l: "Evacuate", t: "text-rose-300", bar: "bg-rose-500", glow: "shadow-[0_0_18px_-8px_rgba(244,63,94,0.7)] border-rose-500/50" },
