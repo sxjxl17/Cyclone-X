@@ -1,4 +1,4 @@
-"""Standard observation / event metadata schema and label definition."""
+
 import numpy as np
 
 OBS_COLUMNS = [
