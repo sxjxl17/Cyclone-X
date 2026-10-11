@@ -1,9 +1,4 @@
-"""Readers that turn one raw file into a RawObservation.
 
-NetCDFReader  - real HURSAT-B1 style netCDF (variable names are CONFIG-DRIVEN and must be
-                verified with scripts/inspect_netcdf.py; nothing is silently guessed).
-NPZFixtureReader - TEST ONLY synthetic fixture; refused unless allow_synthetic=true.
-"""
 import json
 import re
 from dataclasses import dataclass, field
