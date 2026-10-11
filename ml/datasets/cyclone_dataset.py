@@ -6,7 +6,7 @@ from ml.utils.io import read_index, read_json
 
 try:
     from torch.utils.data import Dataset as _Base
-except ImportError:  # keeps non-torch tooling/tests importable
+except ImportError: 
     _Base = object
 
 
@@ -30,8 +30,8 @@ class CycloneDataset(_Base):
         r = self.df.iloc[i]
         x = np.load(self.proc / r.array_path).astype(np.float32)
         x = (x - self.mean) / self.std
-        x = np.nan_to_num(x, nan=0.0)  # NaN -> train mean (0 after normalisation); documented
-        if self.augment:  # 90-degree rotations only: flips would reverse the cyclonic sense
+        x = np.nan_to_num(x, nan=0.0) 
+        if self.augment:  
             x = np.ascontiguousarray(np.rot90(x, self.rng.randint(4), axes=(1, 2)))
         return x, int(r.class_idx), r.obs_id
 
