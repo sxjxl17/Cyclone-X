@@ -2,7 +2,6 @@ import React from "react";
 import { NavLink, Link, Outlet } from "react-router-dom";
 import { useStorm } from "../state";
 import { Clock } from "./ui";
-
 export const NAV = [
   { to: "/", end: true, label: "Overview" },
   { to: "/imagery", label: "Satellite imagery" },
