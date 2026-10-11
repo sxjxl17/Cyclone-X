@@ -1,11 +1,4 @@
-"""
-Generates the DEMO satellite overlays used by CycloneX (transparent PNGs).
 
-These are synthetic stand-ins for real INSAT-3DR / Himawari / HURSAT products so the
-prototype can run offline. Replace the files in public/imagery/ (or plug a new provider
-into src/lib/imagery.js) to use real data. Run:  python scripts/make_demo_imagery.py
-Requires: numpy, scipy, pillow
-"""
 import numpy as np
 from PIL import Image
 from scipy.ndimage import map_coordinates, gaussian_filter
