@@ -1,19 +1,11 @@
-"""##########################################################################
- SYNTHETIC PROTOTYPE DATA (VIS + IR + WV) FOR CYCLONEX STEP 2 - NOT REAL SATELLITE DATA
- Physically-flavoured toy renderer: one shared cloud field drives all three channels
-   IR  (K)   : cold where clouds are tall           WV (K): cold/moist where upper-level moisture is high
-   VIS (0-1) : bright where clouds are optically thick
- Cyclones = spiral bands + central dense overcast (+ eye when strong); non-cyclone scenes contain clutter
- (convective blobs, frontal bands, one comma-shaped extratropical-like system) so detection is not trivial.
- Everything written is tagged synthetic and only under 'synthetic_test_only' paths.
-##########################################################################"""
+
 import json
 from pathlib import Path
 
 import numpy as np
 import pandas as pd
 
-D = 0.07  # degrees per pixel (matches the documented HURSAT-B1 grid spacing)
+D = 0.07 
 
 
 def _clutter(h, w, rng, n=None, frontal=False, comma=False):
@@ -24,10 +16,10 @@ def _clutter(h, w, rng, n=None, frontal=False, comma=False):
         ang = rng.uniform(0, np.pi); e = rng.uniform(1.0, 2.5)
         u = (x - cx) * np.cos(ang) + (y - cy) * np.sin(ang); v = -(x - cx) * np.sin(ang) + (y - cy) * np.cos(ang)
         c += a * np.exp(-((u / (s * e)) ** 2 + (v / s) ** 2))
-    if frontal:                       # elongated frontal cloud band
+    if frontal:                      
         ang = rng.uniform(0, np.pi); d = (x - w / 2) * np.sin(ang) - (y - h / 2) * np.cos(ang)
         c += 0.55 * np.exp(-(d / rng.uniform(6, 14)) ** 2) * (0.6 + 0.4 * np.sin((x + y) / rng.uniform(15, 40)))
-    if comma:                         # comma-shaped non-tropical system (cyclone-like distractor, no eye, no CDO)
+    if comma:                         
         cy, cx = rng.uniform(0.3, 0.7) * h, rng.uniform(0.3, 0.7) * w
         r, th = np.hypot(x - cx, y - cy), np.arctan2(y - cy, x - cx)
         c += 0.6 * np.exp(-((r - 40 - 20 * np.cos(th)) / 14) ** 2) * (np.cos(th / 2) ** 2)
@@ -81,7 +73,7 @@ def generate_positive_fixture(raw_dir, seed=0, n_events=16, n_obs=8, size=301):
             wind = float(np.clip(w0 + slope * k - (3 * k * k if k > 5 else 0), 20, 140)); ts = t0 + pd.Timedelta(days=30 * e, hours=3 * k)
             lat, lon = lat0 + 0.3 * k, lon0 + 0.4 * k
             ch, (cy, cx) = storm_scene(size, wind, rng)
-            # raw grid: north-up, lat decreasing with row; the storm sits at (cy,cx), NOT exactly the grid centre
+           
             grid = {"lat0": lat + cy * D, "lon0": lon - cx * D, "dlat_row": -D, "dlon_col": D, "shape": [size, size]}
             meta = {"synthetic": True, "event_id": eid, "name": f"SYNTH{e}", "basin": "SYN-A" if e % 2 == 0 else "SYN-B",
                     "timestamp": ts.isoformat(), "lat": lat, "lon": lon, "wind_kt": wind, "pressure_hpa": 1010 - 0.45 * wind, "grid": grid}
