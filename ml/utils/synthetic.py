@@ -1,10 +1,4 @@
-"""##########################################################################
- SYNTHETIC TEST FIXTURE GENERATOR  -  TEST ONLY  -  NOT REAL SATELLITE DATA
- Exists purely to exercise the software pipeline (ingest/preprocess/split/
- leakage/train code paths). Output is written ONLY under a path containing
- 'synthetic_test_only', every file carries synthetic=true, and the pipeline
- refuses to mix it with real data or to train on it without allow_synthetic.
-##########################################################################"""
+
 import json
 import shutil
 from pathlib import Path
@@ -48,16 +42,16 @@ def generate_fixture(raw_dir, seed=0, n_events=14, n_obs=8, size=232):
                     "pressure_hpa": 1010 - 0.45 * wind}
             arrs = {c: _image(wind, size, rng, c) for c in ("irwin", "irwvp")}
             files.append((f"{eid}_{k:02d}.npz", meta, arrs))
-    # deliberately flawed files to exercise the validators
+   
     f = files
     nan_big = f[3][2]["irwin"].astype(np.float16).copy(); nan_big[:100, :] = np.nan
-    f[3][2]["irwin"] = nan_big                                       # too many NaN -> rejected
+    f[3][2]["irwin"] = nan_big                                      
     nan_small = f[10][2]["irwin"].copy(); nan_small[:5, :20] = np.nan
-    f[10][2]["irwin"] = nan_small                                    # few NaN -> kept
-    f[20][1]["wind_kt"] = float("nan")                               # no label -> rejected
-    del f[30][2]["irwvp"]                                            # missing channel -> rejected
+    f[10][2]["irwin"] = nan_small                                    
+    f[20][1]["wind_kt"] = float("nan")                               
+    del f[30][2]["irwvp"]                                            
     for name, meta, arrs in files:
         np.savez_compressed(raw_dir / name, meta_json=np.array(json.dumps(meta, allow_nan=True)), **arrs)
-    shutil.copy(raw_dir / files[5][0], raw_dir / "ZZ_DUPLICATE_OF_SYN00_05.npz")      # exact duplicate file
-    (raw_dir / "ZZ_CORRUPT.npz").write_bytes(b"this is not an npz file")             # corrupted file
+    shutil.copy(raw_dir / files[5][0], raw_dir / "ZZ_DUPLICATE_OF_SYN00_05.npz")      
+    (raw_dir / "ZZ_CORRUPT.npz").write_bytes(b"this is not an npz file")             
     return raw_dir
