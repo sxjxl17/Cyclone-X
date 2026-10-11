@@ -25,7 +25,7 @@ export const cone = (pts) => {
 };
 const merc = (lat) => Math.log(Math.tan(Math.PI / 4 + (lat * RAD) / 2));
 const inv = (y) => (2 * Math.atan(Math.exp(y)) - Math.PI / 2) / RAD;
-/* square (in Web Mercator) image footprint centred on lon/lat, half-width in degrees of longitude */
+
 export const squareBox = (lon, lat, h) => { const d = h * RAD, y = merc(lat), t = inv(y + d), b = inv(y - d); return [[lon - h, t], [lon + h, t], [lon + h, b], [lon - h, b]]; };
 
 export const TC = ["TD", "TS", "C1", "C2", "C3", "C4", "C5"];
@@ -33,7 +33,7 @@ export const CLASS_NAMES = ["Tropical depression", "Tropical storm", "Category 1
 export const COL = ["#6aa8d8", "#5fb88a", "#d6c45a", "#e0903f", "#d9534f", "#c0409a", "#8e5bd0"];
 export const cat = (w) => (w >= 137 ? 6 : w >= 113 ? 5 : w >= 96 ? 4 : w >= 83 ? 3 : w >= 64 ? 2 : w >= 34 ? 1 : 0);
 export const classify = (w) => { const i = cat(w); return { i, k: TC[i], n: CLASS_NAMES[i], c: COL[i] }; };
-/* wind-radius contours in km for 34, 50 and 64 kt winds */
+
 export const RADII = (w) => [[34, 120 + w * 2.8, "#d9b84a"], [50, 70 + w * 1.7, "#e0803f"], [64, 40 + w * 1.1, "#d9534f"]].filter(([kt]) => w >= kt);
 export const fmtPos = (p) => `${p.lat.toFixed(1)}°N ${p.lon.toFixed(1)}°E`;
 const CARD = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"];
