@@ -1,4 +1,4 @@
-"""Validate raw files and build the observation metadata table (nothing is dropped silently)."""
+
 import pandas as pd
 
 from ml.preprocessing.readers import IngestError, get_reader
