@@ -1,4 +1,4 @@
-"""Reproducible detector training + test evaluation for one experiment (channels x architecture)."""
+
 import time
 
 import numpy as np
@@ -49,7 +49,7 @@ def run_experiment(cfg, exp, out_root=None):
     dc, tc, P = cfg["detection"], cfg["detection"]["train"], det_paths(cfg)
     seed_everything(cfg["seed"])
     idx, splits, stats = read_index(P["index"]), read_json(P["splits"]), read_json(P["stats"])
-    check_detection_leakage(idx, splits, stats)                         # fail loudly before training
+    check_detection_leakage(idx, splits, stats)                         
     man = read_json(P["manifest"])
     if man["synthetic"] != bool(cfg["allow_synthetic"]):
         raise RuntimeError("detection dataset synthetic status disagrees with config - refusing to train")
