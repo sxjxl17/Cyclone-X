@@ -1,0 +1,232 @@
+{
+ "trackErr": [
+  {
+   "h": 12,
+   "cx": 38,
+   "base": 55
+  },
+  {
+   "h": 24,
+   "cx": 68,
+   "base": 105
+  },
+  {
+   "h": 36,
+   "cx": 93,
+   "base": 160
+  },
+  {
+   "h": 48,
+   "cx": 118,
+   "base": 215
+  },
+  {
+   "h": 72,
+   "cx": 176,
+   "base": 330
+  }
+ ],
+ "intErr": [
+  {
+   "h": 12,
+   "cx": 5,
+   "base": 8
+  },
+  {
+   "h": 24,
+   "cx": 9,
+   "base": 13
+  },
+  {
+   "h": 36,
+   "cx": 11,
+   "base": 16
+  },
+  {
+   "h": 48,
+   "cx": 13,
+   "base": 18
+  },
+  {
+   "h": 72,
+   "cx": 17,
+   "base": 22
+  }
+ ],
+ "prob": [
+  [
+   "Rapid intensification (30 kt in 24 h)",
+   18
+  ],
+  [
+   "Category 3 or stronger at landfall",
+   56
+  ],
+  [
+   "Landfall within 50 km of Mumbai",
+   68
+  ],
+  [
+   "Landfall within 100 km of Mumbai",
+   89
+  ],
+  [
+   "Storm surge above 3 m",
+   61
+  ]
+ ],
+ "analogs": [
+  {
+   "n": "Tauktae",
+   "y": 2021,
+   "area": "Near Diu, Gujarat",
+   "cls": "C3",
+   "sim": 84
+  },
+  {
+   "n": "Biparjoy",
+   "y": 2023,
+   "area": "Jakhau, Kutch, Gujarat",
+   "cls": "C3",
+   "sim": 79
+  },
+  {
+   "n": "Nisarga",
+   "y": 2020,
+   "area": "Alibag, Maharashtra",
+   "cls": "C1",
+   "sim": 76
+  },
+  {
+   "n": "Vayu",
+   "y": 2019,
+   "area": "Skirted the Gujarat coast",
+   "cls": "C2",
+   "sim": 66
+  },
+  {
+   "n": "Phyan",
+   "y": 2009,
+   "area": "Konkan coast near Alibag",
+   "cls": "TS",
+   "sim": 61
+  }
+ ],
+ "tnum": [
+  3.0,
+  3.5,
+  4.0,
+  4.5,
+  5.0
+ ],
+ "dvorak": {
+  "3.0": 45,
+  "3.5": 55,
+  "4.0": 65,
+  "4.5": 77,
+  "5.0": 90
+ },
+ "channels": [
+  {
+   "b": "Visible",
+   "wl": "0.55–0.75 µm",
+   "res": "1 km",
+   "shows": "Reflected sunlight: cloud structure, eye and spiral bands",
+   "use": "Centre fixing and structure, daylight only"
+  },
+  {
+   "b": "Infrared (TIR-1)",
+   "wl": "10.3–11.3 µm",
+   "res": "4 km",
+   "shows": "Cloud-top temperature",
+   "use": "Intensity estimate, day and night"
+  },
+  {
+   "b": "Water vapour",
+   "wl": "6.5–7.1 µm",
+   "res": "8 km",
+   "shows": "Moisture in the upper troposphere",
+   "use": "Dry-air intrusion and steering flow"
+  }
+ ],
+ "levels": [
+  {
+   "c": "#3fa66b",
+   "n": "Green",
+   "t": "No warning",
+   "a": "No action needed"
+  },
+  {
+   "c": "#d6c45a",
+   "n": "Yellow",
+   "t": "Watch",
+   "a": "Be aware and keep updated"
+  },
+  {
+   "c": "#e0803f",
+   "n": "Orange",
+   "t": "Alert",
+   "a": "Be prepared to act"
+  },
+  {
+   "c": "#d9534f",
+   "n": "Red",
+   "t": "Warning",
+   "a": "Take action now"
+  }
+ ],
+ "regions": [
+  {
+   "r": "Mumbai, Thane and Raigad coast",
+   "lv": "Red"
+  },
+  {
+   "r": "Palghar and Valsad",
+   "lv": "Orange"
+  },
+  {
+   "r": "Ratnagiri and Sindhudurg",
+   "lv": "Orange"
+  },
+  {
+   "r": "South Gujarat coast",
+   "lv": "Yellow"
+  },
+  {
+   "r": "Goa",
+   "lv": "Yellow"
+  }
+ ],
+ "dissem": [
+  {
+   "c": "Cell broadcast and SMS (CAP)",
+   "r": "9.6 million handsets",
+   "s": "Sent"
+  },
+  {
+   "c": "Interactive voice calls to district officers",
+   "r": "2,100 officers",
+   "s": "Sent"
+  },
+  {
+   "c": "Coastal sirens and public address",
+   "r": "310 sirens",
+   "s": "Scheduled T-24 h"
+  },
+  {
+   "c": "All India Radio, Doordarshan and local TV bulletins",
+   "r": "Every 3 hours",
+   "s": "Running"
+  },
+  {
+   "c": "Fishermen advisories by VHF and NavIC",
+   "r": "4,800 boats",
+   "s": "Sent"
+  },
+  {
+   "c": "Suburban rail and metro announcements",
+   "r": "All lines",
+   "s": "Scheduled T-18 h"
+  }
+ ]
+}

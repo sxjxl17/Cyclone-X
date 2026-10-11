@@ -1,0 +1,115 @@
+[
+ {
+  "id": "09W",
+  "name": "Typhoon 09W",
+  "basin": "West Pacific",
+  "lon": 134.0,
+  "lat": 17.5,
+  "wind": 115,
+  "sh": false,
+  "move": "W 21 km/h",
+  "end": [
+   118.0,
+   21.0
+  ],
+  "curve": 60,
+  "peak": [
+   24,
+   125
+  ],
+  "end72": 70,
+  "landfall": {
+   "h": 60,
+   "name": "Luzon Strait, Philippines",
+   "short": "Luzon Strait"
+  }
+ },
+ {
+  "id": "12L",
+  "name": "Hurricane 12L",
+  "basin": "North Atlantic",
+  "lon": -58.0,
+  "lat": 16.5,
+  "wind": 70,
+  "sh": false,
+  "move": "WNW 25 km/h",
+  "end": [
+   -75.5,
+   20.3
+  ],
+  "curve": -40,
+  "peak": [
+   60,
+   105
+  ],
+  "end72": 98,
+  "landfall": {
+   "h": 72,
+   "name": "Eastern Cuba",
+   "short": "eastern Cuba"
+  }
+ },
+ {
+  "id": "08E",
+  "name": "Hurricane 08E",
+  "basin": "East Pacific",
+  "lon": -112.0,
+  "lat": 14.5,
+  "wind": 90,
+  "sh": false,
+  "move": "W 15 km/h",
+  "end": [
+   -125.0,
+   16.0
+  ],
+  "curve": 30,
+  "peak": [
+   12,
+   95
+  ],
+  "end72": 60,
+  "landfall": null
+ },
+ {
+  "id": "06S",
+  "name": "Cyclone 06S",
+  "basin": "South Indian Ocean",
+  "lon": 78.0,
+  "lat": -16.0,
+  "wind": 75,
+  "sh": true,
+  "move": "SW 12 km/h",
+  "end": [
+   70.0,
+   -25.0
+  ],
+  "curve": -30,
+  "peak": [
+   12,
+   85
+  ],
+  "end72": 50,
+  "landfall": null
+ },
+ {
+  "id": "05P",
+  "name": "Cyclone 05P",
+  "basin": "South Pacific",
+  "lon": 163.0,
+  "lat": -17.5,
+  "wind": 55,
+  "sh": true,
+  "move": "SSE 10 km/h",
+  "end": [
+   168.0,
+   -27.0
+  ],
+  "curve": 40,
+  "peak": [
+   36,
+   75
+  ],
+  "end72": 68,
+  "landfall": null
+ }
+]

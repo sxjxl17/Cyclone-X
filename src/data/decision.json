@@ -1,0 +1,203 @@
+{
+ "phases": [
+  {
+   "h": 48,
+   "label": "Now",
+   "note": "Cyclone confirmed and track forecast issued"
+  },
+  {
+   "h": 36,
+   "label": "T-36 h",
+   "note": "Begin evacuation of low-lying coastal villages"
+  },
+  {
+   "h": 24,
+   "label": "T-24 h",
+   "note": "Shelters open, ports and sea travel closed"
+  },
+  {
+   "h": 12,
+   "label": "T-12 h",
+   "note": "Planned power and telecom shutdowns, everyone indoors"
+  },
+  {
+   "h": 0,
+   "label": "Landfall",
+   "note": "Emergency response on standby, no movement outdoors"
+  }
+ ],
+ "impact": [
+  {
+   "k": "People in the warning zone",
+   "v": "9.2 million"
+  },
+  {
+   "k": "Cyclone shelters ready",
+   "v": "980"
+  },
+  {
+   "k": "Fishing boats to recall",
+   "v": "4,800"
+  },
+  {
+   "k": "Districts on red alert",
+   "v": "4"
+  }
+ ],
+ "audiences": {
+  "Authorities": [
+   {
+    "a": "Activate the state emergency operations centre",
+    "due": 48
+   },
+   {
+    "a": "Pre-position NDRF and SDRF teams in Raigad, Thane and Mumbai",
+    "due": 40
+   },
+   {
+    "a": "Order evacuation of low-lying wards within 5 km of the shore",
+    "due": 36
+   },
+   {
+    "a": "Open all cyclone shelters and confirm food and water stocks",
+    "due": 24
+   },
+   {
+    "a": "Plan suspension of suburban rail, metro and flights before winds pass 70 km/h",
+    "due": 18
+   }
+  ],
+  "Coastal communities": [
+   {
+    "a": "Secure homes and move valuables and documents to higher floors",
+    "due": 36
+   },
+   {
+    "a": "Move to the nearest cyclone shelter before the winds pass 90 km/h",
+    "due": 24
+   },
+   {
+    "a": "Keep a radio, torch and drinking water ready",
+    "due": 24
+   },
+   {
+    "a": "Stay indoors until officials announce it is safe",
+    "due": 12
+   }
+  ],
+  "Fisheries and shipping": [
+   {
+    "a": "Recall all boats and trawlers from the Arabian Sea",
+    "due": 48
+   },
+   {
+    "a": "Evacuate offshore platforms at Mumbai High",
+    "due": 36
+   },
+   {
+    "a": "Hold vessels at Mumbai Port and JNPT and suspend cargo handling",
+    "due": 24
+   }
+  ],
+  "Power and telecom": [
+   {
+    "a": "Inspect and secure towers and substations on the coast",
+    "due": 36
+   },
+   {
+    "a": "Prepare staged shutdown of coastal feeders",
+    "due": 12
+   },
+   {
+    "a": "Position repair crews inland for restoration",
+    "due": 12
+   }
+  ],
+  "Agriculture and industry": [
+   {
+    "a": "Harvest standing crops in Raigad and Ratnagiri where possible",
+    "due": 40
+   },
+   {
+    "a": "Move stock away from low-lying industrial areas",
+    "due": 30
+   },
+   {
+    "a": "Plan shutdown of coastal plants and chemical units",
+    "due": 18
+   }
+  ]
+ },
+ "districts": [
+  {
+   "n": "Raigad",
+   "s": "Maharashtra",
+   "risk": "Extreme",
+   "wind": "150 km/h",
+   "surge": "3.2 m",
+   "pop": "2.7 million",
+   "shelters": 190,
+   "act": "Evacuate coastal blocks"
+  },
+  {
+   "n": "Mumbai City and Suburban",
+   "s": "Maharashtra",
+   "risk": "Extreme",
+   "wind": "145 km/h",
+   "surge": "2.8 m",
+   "pop": "12.4 million",
+   "shelters": 310,
+   "act": "Evacuate low-lying wards"
+  },
+  {
+   "n": "Thane",
+   "s": "Maharashtra",
+   "risk": "High",
+   "wind": "130 km/h",
+   "surge": "2.4 m",
+   "pop": "11.1 million",
+   "shelters": 260,
+   "act": "Move people from creek areas"
+  },
+  {
+   "n": "Palghar",
+   "s": "Maharashtra",
+   "risk": "High",
+   "wind": "125 km/h",
+   "surge": "2.2 m",
+   "pop": "3.0 million",
+   "shelters": 170,
+   "act": "Evacuate fishing villages"
+  },
+  {
+   "n": "Ratnagiri",
+   "s": "Maharashtra",
+   "risk": "Moderate",
+   "wind": "100 km/h",
+   "surge": "1.6 m",
+   "pop": "1.6 million",
+   "shelters": 140,
+   "act": "Stand by for evacuation"
+  },
+  {
+   "n": "Valsad",
+   "s": "Gujarat",
+   "risk": "Moderate",
+   "wind": "90 km/h",
+   "surge": "1.2 m",
+   "pop": "1.7 million",
+   "shelters": 120,
+   "act": "Issue public advisories"
+  },
+  {
+   "n": "Sindhudurg",
+   "s": "Maharashtra",
+   "risk": "Moderate",
+   "wind": "85 km/h",
+   "surge": "1.1 m",
+   "pop": "0.9 million",
+   "shelters": 95,
+   "act": "Recall fishing boats"
+  }
+ ]
+}

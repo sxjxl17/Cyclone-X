@@ -1,0 +1,108 @@
+{
+ "track": [
+  [
+   67.4,
+   14.6
+  ],
+  [
+   68.1,
+   15.2
+  ],
+  [
+   68.8,
+   15.8
+  ],
+  [
+   70.2,
+   17.0
+  ],
+  [
+   71.5,
+   18.0
+  ],
+  [
+   72.8,
+   18.9
+  ],
+  [
+   74.0,
+   20.0
+  ],
+  [
+   75.2,
+   21.0
+  ]
+ ],
+ "past": [
+  [
+   64.9,
+   12.0
+  ],
+  [
+   65.5,
+   12.6
+  ],
+  [
+   66.1,
+   13.2
+  ],
+  [
+   66.7,
+   13.9
+  ]
+ ],
+ "pressure": [
+  972,
+  969,
+  966,
+  960,
+  958,
+  964,
+  982,
+  996
+ ],
+ "ai": {
+  "summary": [
+   "CycloneX is tracking a Category 2 cyclone that is still strengthening over the Arabian Sea.",
+   "Landfall is likely near Mumbai in about 48 hours, as a Category 3 cyclone.",
+   "The Konkan and south Gujarat coasts need to prepare now."
+  ],
+  "qa": {
+   "Why is it strengthening?": "Sea water under the storm is about 29 °C and wind shear is low. The eye has cleared and its cloud tops cooled 24 °C in 18 hours, so the storm is getting stronger.",
+   "Where will it land?": "Most model members cross the coast within 40 km of Mumbai, between Alibag and Palghar. Confidence is 72% at landfall, so the point can still shift north or south.",
+   "Who should evacuate?": "People within 5 km of the coast in Mumbai, Thane and Raigad, and the fishing villages at Alibag, Uran and Palghar. Move to shelters before the winds pass 90 km/h."
+  }
+ },
+ "pastWind": [
+  55,
+  62,
+  70,
+  78
+ ],
+ "pastPressure": [
+  990,
+  985,
+  980,
+  976
+ ],
+ "risk": [
+  {
+   "km": 220,
+   "c": "#d9a441",
+   "l": "Heavy rain and gales",
+   "d": "Tropical storm force winds and flooding rain"
+  },
+  {
+   "km": 130,
+   "c": "#e0803f",
+   "l": "Destructive winds",
+   "d": "Damage to kutcha houses, trees and power lines"
+  },
+  {
+   "km": 60,
+   "c": "#d9534f",
+   "l": "Surge and landfall core",
+   "d": "Storm surge up to 3.5 m and the strongest winds"
+  }
+ ]
+}

@@ -1,0 +1,76 @@
+{
+  "stages": [
+    "TD",
+    "TS",
+    "C1",
+    "C2",
+    "C3",
+    "C4",
+    "C5"
+  ],
+  "stageProbs": [
+    {
+      "l": "C2",
+      "p": 78
+    },
+    {
+      "l": "C3",
+      "p": 14
+    },
+    {
+      "l": "C1",
+      "p": 8
+    }
+  ],
+  "frames": [
+    {
+      "t": "18 h ago",
+      "ctt": -62,
+      "eye": 0,
+      "sym": 41,
+      "note": "Curved rain bands are forming around a broad centre."
+    },
+    {
+      "t": "12 h ago",
+      "ctt": -69,
+      "eye": 0,
+      "sym": 52,
+      "note": "Convection is wrapping tighter; cloud tops are cooling."
+    },
+    {
+      "t": "6 h ago",
+      "ctt": -76,
+      "eye": 18,
+      "sym": 68,
+      "note": "A first eye appears and the core is becoming round."
+    },
+    {
+      "t": "3 h ago",
+      "ctt": -81,
+      "eye": 22,
+      "sym": 77,
+      "note": "The eye clears and the eyewall ring closes."
+    },
+    {
+      "t": "Now",
+      "ctt": -86,
+      "eye": 28,
+      "sym": 84,
+      "note": "A symmetric, cold eyewall points to continued strengthening."
+    }
+  ],
+  "models": [
+    {
+      "n": "CNN (cloud pattern)",
+      "v": 93
+    },
+    {
+      "n": "Transformer (evolution)",
+      "v": 88
+    },
+    {
+      "n": "Time-series (track)",
+      "v": 84
+    }
+  ]
+}

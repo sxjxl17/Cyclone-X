@@ -1,0 +1,66 @@
+{
+ "seed": [
+  {
+   "id": 1,
+   "sev": "evacuate",
+   "region": "Mumbai, Thane and Raigad coast",
+   "title": "Move away from the Mumbai and Raigad coast",
+   "body": "A storm surge of about 3 m and winds above 150 km/h are expected near landfall. People living within 5 km of the shore should reach cyclone shelters before dark.",
+   "src": "Risk model v3.2",
+   "ago": 14
+  },
+  {
+   "id": 2,
+   "sev": "evacuate",
+   "region": "Alibag, Uran and Palghar",
+   "title": "Koli fishing villages: leave and secure boats",
+   "body": "Pull boats above the high-tide line and move families to shelters. Sea conditions will be dangerous from tomorrow evening.",
+   "src": "Risk model v3.2",
+   "ago": 16
+  },
+  {
+   "id": 3,
+   "sev": "warning",
+   "region": "Arabian Sea, east-central",
+   "title": "Landfall likely in about 48 hours near Mumbai",
+   "body": "The predicted track has 72% confidence at landfall. Expect it to cross the Konkan coast as a Category 3 cyclone.",
+   "src": "Track forecaster",
+   "ago": 25
+  },
+  {
+   "id": 4,
+   "sev": "warning",
+   "region": "Storm core",
+   "title": "The storm is strengthening quickly",
+   "body": "Winds rose 15 knots in 12 hours and cloud tops cooled to -86 °C. More strengthening is likely before landfall.",
+   "src": "Evolution analysis",
+   "ago": 44
+  },
+  {
+   "id": 5,
+   "sev": "watch",
+   "region": "Konkan and south Gujarat",
+   "title": "Heavy rain of 200 mm or more is possible",
+   "body": "Urban waterlogging in Mumbai and flooding of low roads and rivers is likely 36 to 60 hours from now. Suburban rail may be disrupted.",
+   "src": "Rainfall model",
+   "ago": 66
+  },
+  {
+   "id": 6,
+   "sev": "update",
+   "region": "Satellite feed",
+   "title": "New INSAT-3DR image confirms a shrinking eye",
+   "body": "The eye is now 28 km wide. All satellite sources agree on the storm's centre within 9 km.",
+   "src": "Data ingest",
+   "ago": 90
+  }
+ ],
+ "live": {
+  "id": 7,
+  "sev": "warning",
+  "region": "Forecast track",
+  "title": "Latest forecast shifts the track 18 km north",
+  "body": "Thane and Palghar now carry the highest surge risk. Shelter plans for Vasai-Virar should be reviewed.",
+  "src": "Ensemble run 12Z"
+ }
+}

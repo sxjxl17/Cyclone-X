@@ -1,0 +1,16 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+.env
+.ipynb_checkpoints/
+.DS_Store
+# data & artefacts are never committed
+ml/data/raw/*
+ml/data/processed/*
+ml/data/metadata/*
+ml/data/splits/*
+ml/data/synthetic_test_only/
+outputs/*
+!**/.gitkeep
+node_modules

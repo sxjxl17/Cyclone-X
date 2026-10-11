@@ -1,0 +1,12 @@
+{
+  "name": "CycloneX",
+  "id": "ARB-02-2026",
+  "basin": "Arabian Sea",
+  "stage": "Category 2 cyclone",
+  "wind": 85,
+  "gust": 118,
+  "pressure": 972,
+  "motion": "NE at 17 km/h",
+  "lat": "14.6°N",
+  "lon": "67.4°E"
+}

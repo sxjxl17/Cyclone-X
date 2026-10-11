@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #root { height: 100%; }
+body { margin: 0; color: #e8f0fc; background-color: #040a26;
+  background-image: radial-gradient(1200px 560px at 78% -6%, rgba(58,100,235,.52), transparent 62%), radial-gradient(900px 520px at 4% 42%, rgba(36,72,200,.32), transparent 62%), radial-gradient(1000px 500px at 90% 100%, rgba(36,72,200,.28), transparent 60%), linear-gradient(180deg, #0b1d6e 0%, #071344 36%, #040a26 100%);
+  background-attachment: fixed; font-family: "Hind", ui-sans-serif, system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+::selection { background: #2a6fb0; color: #fff; }
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+.maplibregl-ctrl-group { background: #101f6e !important; border: 1px solid #2a47b8; box-shadow: none !important; border-radius: 2px !important; }
+.maplibregl-ctrl-group button + button { border-top: 1px solid #2a47b8 !important; }
+.maplibregl-ctrl-group button .maplibregl-ctrl-icon { filter: invert(1) opacity(.8); }
+.maplibregl-ctrl-attrib { background: rgba(4,10,38,.7) !important; color: #a3b2e8 !important; }
+.maplibregl-ctrl-attrib a { color: #a3b2e8 !important; }
