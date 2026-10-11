@@ -1,4 +1,4 @@
-"""Detection / event-level / localization metrics (numpy + sklearn only; no torch)."""
+
 import numpy as np
 import pandas as pd
 
