@@ -29,4 +29,4 @@ def build_model(cfg):
     if m["name"] != "baseline_cnn":
         raise ValueError(f"unknown model {m['name']}")
     return BaselineCNN(len(cfg["data"]["channels"]), len(cfg["task"]["class_names"]),
-                       tuple(m["widths"]), m["dropout"])
+                       tuple(m["widths"]), m["dropout"]) 
