@@ -23,7 +23,7 @@ def plot_confusion(cm, names, path, title="Confusion matrix"):
     ax.set_xticks(range(len(names))); ax.set_xticklabels(names)
     ax.set_yticks(range(len(names))); ax.set_yticklabels(names)
     ax.set_xlabel("predicted"); ax.set_ylabel("true"); ax.set_title(title)
-    for i in range(cm.shape[0]):
+    for i in range(cm.shape[0]): 
         for j in range(cm.shape[1]):
             ax.text(j, i, int(cm[i, j]), ha="center", va="center", color="black")
     fig.tight_layout(); fig.savefig(path, dpi=120); plt.close(fig)
