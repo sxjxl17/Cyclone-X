@@ -1,12 +1,4 @@
-/*
- * Imagery provider. The map only ever asks this module for georeferenced images:
- *   region(band)         -> global cloud / moisture field (whole world)
- *   cyclone(band, point) -> image of the cyclone, positioned at point.lon / point.lat
- *   system(band, s)      -> the other monitored cyclones, drawn at their current position
- *   radar(point) / radarSystem(s) -> rain-intensity colouring used on the home page map
- * Each returns { url, coordinates } where coordinates are [[lonTL,latTL],[lonTR,latTR],[lonBR,latBR],[lonBL,latBL]].
- * To use real INSAT-3DR / Himawari / HURSAT data, write a provider with the same shape and call setProvider().
- */
+
 import { squareBox } from "./geo";
 import { stamp } from "./data";
 
