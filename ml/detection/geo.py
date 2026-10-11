@@ -1,5 +1,4 @@
-"""Pixel <-> geographic conversion. Geographic output is produced ONLY from a GridMapping built from real
-grid axes; otherwise callers must report image-coordinate error only (never fake geo)."""
+
 from dataclasses import dataclass, asdict
 
 import numpy as np
