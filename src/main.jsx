@@ -5,7 +5,7 @@ import App from "./App.jsx";
 import { StormProvider } from "./state.jsx";
 import "./index.css";
 
-
+ 
 class Boundary extends React.Component {
   state = { err: null };
   static getDerivedStateFromError(err) { return { err }; }
