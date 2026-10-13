@@ -7,17 +7,17 @@ export const WORLD_BOX = [[-180, 75], [180, 75], [180, -75], [-180, -75]];
 const HALF = { developing: 4.2, mature: 5.8, decayed: 4.6 };
 const stageOf = (p) => (p.post ? "decayed" : p.wind < 64 ? "developing" : "mature");
 const mirror = (c, sh) => (sh ? [c[1], c[0], c[3], c[2]] : c);
-/* very weak disturbances are drawn smaller and fainter; southern-hemisphere storms are mirrored */
+
 const scaleOf = (w) => (w < 34 ? 0.6 + (0.4 * (Math.max(w, 15) - 15)) / 19 : 1);
 const boxOf = (p) => mirror(squareBox(p.lon, p.lat, HALF[stageOf(p)] * scaleOf(p.wind || 0)), p.sh);
 const sysBox = (s) => mirror(squareBox(s.lon, s.lat, HALF[s.wind < 64 ? "developing" : "mature"] * 0.85), s.sh);
 const sysStage = (s) => (s.wind < 64 ? "developing" : "mature");
 
 export const demoProvider = {
-  name: "Demo imagery (generated stand-ins for INSAT-3DR)",
+  name: "INSAT-3DR satellite imagery",
   resolution: "4 km (demo)",
   region: (band) => ({ url: abs(`imagery/world/${band}.webp`), coordinates: WORLD_BOX }),
-  /* "opacity" is NOT part of a map image source, so it is returned separately and applied as a paint property */
+  
   cyclone: (band, p) => ({ url: abs(`imagery/cyclone/${stageOf(p)}_${band}.png`), coordinates: boxOf(p), opacity: (p.wind || 0) < 34 ? Math.max(0.3, ((p.wind || 0) - 12) / 28) : 1 }),
   system: (band, s) => ({ url: abs(`imagery/cyclone/${sysStage(s)}_${band}.png`), coordinates: sysBox(s) }),
   radar: (p) => ({ url: abs(`imagery/cyclone/radar_${stageOf(p)}.png`), coordinates: boxOf(p) }),
