@@ -3,7 +3,7 @@ import { MessageCircle, X, Send } from "lucide-react";
 import { useStorm } from "../state";
 import { answer, STARTERS } from "../lib/chatbot";
 
-/* Floating assistant. Works fully offline: answers come from lib/chatbot.js, which reads CycloneX's own data. */
+
 const HELLO = { from: "bot", text: "Hello, I am the CycloneX assistant. I answer only from the data in CycloneX. Pick a question below or type your own.", next: STARTERS };
 
 export default function ChatBot() {
