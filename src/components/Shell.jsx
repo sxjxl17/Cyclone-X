@@ -2,6 +2,8 @@ import React from "react";
 import { NavLink, Link, Outlet } from "react-router-dom";
 import { useStorm } from "../state";
 import { Clock } from "./ui";
+import ChatBot from "./ChatBot";
+
 export const NAV = [
   { to: "/", end: true, label: "Overview" },
   { to: "/imagery", label: "Satellite imagery" },
@@ -30,6 +32,7 @@ export default function Shell() {
       </header>
       <nav aria-label="Pages" className="flex gap-6 overflow-x-auto border-b border-line bg-ink-950/80 px-5 lg:hidden">{NAV.map((n) => <NavLink key={n.to} to={n.to} end={n.end} className={link}>{n.label}</NavLink>)}</nav>
       <main className="min-h-0 flex-1 overflow-y-auto"><Outlet /></main>
+      <ChatBot />
     </div>
   );
 }
