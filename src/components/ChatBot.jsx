@@ -3,15 +3,15 @@ import { MessageCircle, X, Send } from "lucide-react";
 import { useStorm } from "../state";
 import { answer, STARTERS } from "../lib/chatbot";
 
-
-const HELLO = { from: "bot", text: "Hello, I am the CycloneX assistant. I answer only from the data in CycloneX. Pick a question below or type your own.", next: STARTERS };
+/* Floating assistant. Works fully offline: answers come from lib/chatbot.js, which reads CycloneX's own data. */
+const HELLO = { from: "bot", text: "Hello, I am the CycloneX assistant. Ask me anything about cyclones, such as how they form, how they are classified, history, warnings and safety, or about the storm shown in CycloneX. Pick a question below or type your own.", next: STARTERS };
 
 export default function ChatBot() {
   const { alerts, sid } = useStorm();
   const [open, setOpen] = useState(false);
   const [msgs, setMsgs] = useState([HELLO]);
   const [text, setText] = useState("");
-  const end = useRef(null), input = useRef(null);
+  const end = useRef(null), input = useRef(null), mem = useRef({});
 
   useEffect(() => { if (open) { end.current?.scrollIntoView({ block: "end" }); input.current?.focus(); } }, [open, msgs]);
   useEffect(() => { const k = (e) => e.key === "Escape" && setOpen(false); window.addEventListener("keydown", k); return () => window.removeEventListener("keydown", k); }, []);
@@ -20,7 +20,7 @@ export default function ChatBot() {
     const t = (q ?? text).trim();
     if (!t) return;
     let r;
-    try { r = answer(t, alerts); } catch (e) { console.error("CycloneX assistant failed:", e); r = { text: "Sorry, I could not work that out. Please try another question.", next: STARTERS.slice(0, 4) }; }
+    try { r = answer(t, alerts, mem.current); mem.current = { last: r.id, more: r.more }; } catch (e) { console.error("CycloneX assistant failed:", e); r = { text: "Sorry, I could not work that out. Please try another question.", next: STARTERS.slice(0, 4) }; }
     setMsgs((m) => [...m, { from: "user", text: t }, { from: "bot", text: r.text, next: r.next }]);
     setText("");
   };
@@ -35,8 +35,9 @@ export default function ChatBot() {
       )}
       {open && (
         <section role="dialog" aria-label="CycloneX assistant" className="fixed inset-x-3 bottom-3 z-50 flex max-h-[80vh] flex-col border border-line bg-ink-950 shadow-2xl sm:inset-x-auto sm:bottom-5 sm:right-5 sm:w-[390px]" style={{ height: "min(620px, 80vh)" }}>
-          <header className="flex items-center justify-between border-b border-line bg-panel px-4 py-3">
-            <div><div className="font-display text-[12px] font-bold uppercase tracking-[0.16em] text-white">CycloneX assistant</div><div className="text-[11px] text-slate-400">Answers only from CycloneX data, selected: {sid}</div></div>
+          <header className="flex items-center border-b border-line bg-panel px-4 py-3">
+            <div><div className="font-display text-[12px] font-bold uppercase tracking-[0.16em] text-white">CycloneX assistant</div><div className="text-[11px] text-slate-400">Works offline. Cyclone knowledge + CycloneX data (selected: {sid})</div></div>
+            <button onClick={() => { setMsgs([HELLO]); mem.current = {}; }} aria-label="Clear the conversation" className="ml-auto mr-2 px-2 py-1 text-[11px] text-slate-300 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-brand">Clear</button>
             <button onClick={() => setOpen(false)} aria-label="Close the assistant" className="p-1 text-slate-300 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-brand"><X className="h-5 w-5" /></button>
           </header>
           <div className="min-h-0 flex-1 space-y-3 overflow-y-auto px-4 py-4" aria-live="polite">
