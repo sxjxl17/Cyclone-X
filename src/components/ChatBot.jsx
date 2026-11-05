@@ -36,7 +36,7 @@ export default function ChatBot() {
       {open && (
         <section role="dialog" aria-label="CycloneX assistant" className="fixed inset-x-3 bottom-3 z-50 flex max-h-[80vh] flex-col border border-line bg-ink-950 shadow-2xl sm:inset-x-auto sm:bottom-5 sm:right-5 sm:w-[390px]" style={{ height: "min(620px, 80vh)" }}>
           <header className="flex items-center border-b border-line bg-panel px-4 py-3">
-            <div><div className="font-display text-[12px] font-bold uppercase tracking-[0.16em] text-white">CycloneX assistant</div><div className="text-[11px] text-slate-400">Works offline. Cyclone knowledge + CycloneX data (selected: {sid})</div></div>
+            <div><div className="font-display text-[12px] font-bold uppercase tracking-[0.16em] text-white">CycloneX assistant</div><div className="text-[11px] text-slate-400"> (selected: {sid})</div></div>
             <button onClick={() => { setMsgs([HELLO]); mem.current = {}; }} aria-label="Clear the conversation" className="ml-auto mr-2 px-2 py-1 text-[11px] text-slate-300 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-brand">Clear</button>
             <button onClick={() => setOpen(false)} aria-label="Close the assistant" className="p-1 text-slate-300 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-brand"><X className="h-5 w-5" /></button>
           </header>
