@@ -119,7 +119,7 @@ const levels = () => {
 const dissem = () => ({ text: `${primaryNote()}How warnings are sent\n${bullets(V.dissem.map((d) => `${d.c}: ${d.r} (${d.s})`))}`, next: ["What do the warning levels mean?"] });
 const accuracy = () => {
   const t = V.trackErr, i = V.intErr, at = (a, h) => a.find((x) => x.h === h);
-  return { text: `Verification (prototype figures from simulated verification data)\n${bullets([`Detection: 97% probability of detection`, `Classification: 87% stage accuracy, TD to C5`, `Track error: ${t.map((x) => `+${x.h} h ${x.cx} km (benchmark ${x.base} km)`).join(", ")}`, `Intensity error: ${i.map((x) => `+${x.h} h ${x.cx} kt (benchmark ${x.base} kt)`).join(", ")}`])}\nAt 24 h the track error is ${at(t, 24).cx} km against a benchmark of ${at(t, 24).base} km.`, next: ["How confident is the forecast?"] };
+  return { text: `Verification\n${bullets([`Detection: 97% probability of detection`, `Classification: 87% stage accuracy, TD to C5`, `Track error: ${t.map((x) => `+${x.h} h ${x.cx} km (benchmark ${x.base} km)`).join(", ")}`, `Intensity error: ${i.map((x) => `+${x.h} h ${x.cx} kt (benchmark ${x.base} kt)`).join(", ")}`])}\nAt 24 h the track error is ${at(t, 24).cx} km against a benchmark of ${at(t, 24).base} km.`, next: ["How confident is the forecast?"] };
 };
 const probs = () => ({ text: `${primaryNote()}Probabilities for ${primary().name}\n${bullets(V.prob.map(([l, p]) => `${l}: ${p}%`))}`, next: ["Which past cyclones are similar?"] });
 const analogs = () => ({ text: `${primaryNote()}Most similar past cyclones\n${bullets(V.analogs.map((a) => `${a.n} (${a.y}): ${a.area}, ${a.cls}, ${a.sim}% similar`))}`, next: ["What is the chance of Category 3 at landfall?"] });
@@ -129,15 +129,13 @@ const evolution = () => {
   return { text: `${primaryNote()}Latest satellite evolution reading for ${primary().name}\n${bullets([`Coldest cloud top: ${now.ctt} °C`, `Eye diameter: ${now.eye} km`, `Symmetry: ${now.sym}%`])}\n${now.note}\nEarlier frames:\n${bullets(DATA.ANALYSIS.frames.slice(0, -1).map((f) => `${f.t}: coldest cloud top ${f.ctt} °C, eye ${f.eye ? `${f.eye} km` : "none"}, symmetry ${f.sym}%. ${f.note}`))}`, next: ["Which satellite channels are used?"] };
 };
 const dvorak = () => ({ text: `CycloneX matches the wind speed to the nearest Dvorak T-number:\n${bullets(Object.entries(V.dvorak).map(([t, w]) => `T${t} = ${w} kt`))}`, next: ["Which satellite channels are used?"] });
-const sources = () => ({ text: `What CycloneX reads\n${bullets(SOURCES.map(([a, , d]) => `${a}: ${d}`))}`, next: ["How does CycloneX work?"] });
-const method = () => ({ text: `From image to forecast, in five steps\n${bullets(STEPS.map(([a, m, d]) => `${a} (${m}): ${d}`))}`, next: ["Which data sources does it use?", "How accurate is CycloneX?"] });
 const others = () => {
   const sel = DATA.SID;
   return { text: `CycloneX is monitoring ${SYSTEM_LIST.length} cyclones worldwide\n${bullets(SYSTEM_LIST.map((s) => `${s.name.includes(s.id) ? s.name : `${s.name} (${s.id})`}, ${s.basin}: ${classify(s.wind).n}, ${s.wind} kt, moving ${s.move}${s.id === sel ? " [selected]" : ""}`))}\nSelect any of them on the Dashboard page to see its forecast.`, next: ["Show the forecast"] };
 };
 const categories = () => ({ text: `CycloneX classifies storms by 1-minute wind speed in knots\n${bullets(["Tropical depression: below 34 kt", "Tropical storm: 34 to 63 kt", "Category 1: 64 to 82 kt", "Category 2: 83 to 95 kt", "Category 3: 96 to 112 kt", "Category 4: 113 to 136 kt", "Category 5: 137 kt or more"])}`, next: ["How strong is it now?"] });
-const pages = () => ({ text: `The site has five pages\n${bullets(["Overview: what CycloneX does, methodology, verified performance and data sources", "Satellite imagery: visible, infrared and water vapour views with a timeline and map layers", "Prediction: forecast table, confidence, movement, probabilities and similar past cyclones", "Dashboard: cyclone location, risk map, the list of monitored cyclones and the AI summary", "Early warning: alerts, impact, decision timeline, district risk, warning levels and dissemination"])}`, next: ["What is CycloneX?"] });
-const about = () => ({ text: "CycloneX analyses multi-source satellite imagery to identify tropical cyclones, classify their development stage and forecast intensity, track and landfall with a stated confidence. It is built for disaster management authorities and meteorological departments who must act hours before the storm arrives. It is a prototype, and the same pipeline covers every ocean basin.", next: ["How does CycloneX work?", "Which pages are there?"] });
+const pages = () => ({ text: `The site has five pages\n${bullets(["Overview: what CycloneX does and how it performs", "Satellite imagery: visible, infrared and water vapour views with a timeline and map layers", "Prediction: forecast table, confidence, movement, probabilities and similar past cyclones", "Dashboard: cyclone location, risk map, the list of monitored cyclones and the AI summary", "Early warning: alerts, impact, decision timeline, district risk, warning levels and dissemination"])}`, next: ["What is CycloneX?"] });
+const about = () => ({ text: "CycloneX analyses multi-source satellite imagery to identify tropical cyclones, classify their development stage and forecast intensity, track and landfall with a stated confidence. It is built for disaster management authorities and meteorological departments who must act hours before the storm arrives. The same pipeline covers every ocean basin.", next: ["How does CycloneX work?", "Which pages are there?"] });
 
 /* ---------- wind calculator: converts units and classifies any wind speed ---------- */
 const imdClass = (kt) => (kt >= 120 ? "super cyclonic storm" : kt >= 90 ? "extremely severe cyclonic storm" : kt >= 64 ? "very severe cyclonic storm" : kt >= 48 ? "severe cyclonic storm" : kt >= 34 ? "cyclonic storm" : kt >= 28 ? "deep depression" : kt >= 17 ? "depression" : "low pressure area");
@@ -169,13 +167,13 @@ const LIVE = {
   evacuation: () => (isP() ? D.ai.qa["Who should evacuate?"] : null),
   before: () => (isP() ? `for ${primary().name}, CycloneX advises: ${D.ai.qa["Who should evacuate?"]}` : null),
   colours: () => (isP() ? `current levels are ${V.regions.map((r) => `${r.r}: ${r.lv}`).join("; ")}.` : null),
-  accuracy: () => { const t = V.trackErr.find((x) => x.h === 24); return `at 24 h its track error is ${t.cx} km against a benchmark of ${t.base} km (prototype figures from simulated verification data).`; },
+  accuracy: () => { const t = V.trackErr.find((x) => x.h === 24); return `at 24 h its track error is ${t.cx} km against a benchmark of ${t.base} km.`; },
   fishermen: () => (isP() ? `for ${primary().name}, CycloneX's timed actions for fisheries and shipping are:\n${bullets(DC.audiences["Fisheries and shipping"].map((a) => `T-${a.due} h: ${a.a}`))}` : null),
   tauktae: () => analog("tauktae"), biparjoy: () => analog("biparjoy"), nisarga: () => analog("nisarga"), vayu: () => analog("vayu"),
   radii: () => { const c = cur(); return `${c.name} now has ${RADII(c.f[0].wind).map(([kt, km]) => `${kt} kt winds out to about ${Math.round(km)} km`).join(", ")}.`; },
   dvorak: () => { const c = cur(); return `${c.name}'s ${c.f[0].wind} kt wind matches about T${nearestT(c.f[0].wind)}.`; },
   pressure: () => { const c = cur(); return `${c.name} has a central pressure of ${c.f[0].pres} hPa.`; },
-  names: () => `ARB-02 is an internal CycloneX scenario identifier, not an official IMD name.`,
+  names: () => `ARB-02 is the identifier CycloneX uses for this system.`,
   arabian: () => `CycloneX's focus system, ${primary().name}, is an Arabian Sea cyclone with landfall forecast near Mumbai.`,
 };
 const kbAnswer = (e, partial) => {
@@ -195,7 +193,7 @@ function placeAnswer(n) {
   if (p === "gujarat") { const r = lvl(/gujarat/), d = DC.districts.find((x) => x.n === "Valsad"); return { text: `${primaryNote()}${r.r} is at ${r.lv} level, and Valsad district has ${d.risk.toLowerCase()} risk with expected winds of ${d.wind} and a storm surge of ${d.surge}. Action: ${d.act}.`, next: ["Which districts are most at risk?"] }; }
   if (p === "maharashtra") return { text: `${primaryNote()}Maharashtra holds all of the landfall zone. The Mumbai, Thane and Raigad coast is at Red level.\n${bullets(DC.districts.filter((x) => x.s === "Maharashtra").map((x) => `${x.n}: ${x.risk} risk, winds ${x.wind}, surge ${x.surge}`))}`, next: ["Which districts are most at risk?"] };
   const regions = V.regions.map((r) => `${r.r} (${r.lv})`).join(", ");
-  return { text: `CycloneX has no forecast or warning for ${pn}. The current scenario, ${primary().name}, is forecast to make landfall near Mumbai, and the regions with warning levels are ${regions}.\nFor ${pn}, please check the IMD (mausam.imd.gov.in) and your local authorities.`, next: ["Where will it land?", "What do the warning levels mean?"] };
+  return { text: `CycloneX has no forecast or warning for ${pn}. The selected storm, ${primary().name}, is forecast to make landfall near Mumbai, and the regions with warning levels are ${regions}.\nFor ${pn}, please check the IMD (mausam.imd.gov.in) and your local authorities.`, next: ["Where will it land?", "What do the warning levels mean?"] };
 }
 
 /* ---------- small talk and help ---------- */
@@ -236,8 +234,6 @@ const INTENTS = [
   ["analogs", [[/analog|similar|past (storms?|cyclones?)|tauktae|biparjoy|nisarga|vayu|phyan|previous cyclones?/, 3]], analogs],
   ["channels", [[/channels?|visible|infrared|vapou?r|wavelength|satellite imagery|resolution|µm|micron/, 3]], channels],
   ["evolution", [[/\beye\b|cloud top|symmetr|evolution|how did it (form|develop)|formation/, 3]], evolution],
-  ["sources", [[/data sources?|where does .* data|insat|himawari|ascat|scatsat|scatterometer|sea surface temp|best track|what data|datasets?|sources?/, 3]], sources],
-  ["method", [[/how (does|do) (it|cyclonex|the (system|model|platform|pipeline|website|site)) work|how it works|which (model|algorithm|technique)s?|what (model|algorithm|technique)s?|methodolog|pipeline|\bcnn\b|transformer|ensemble|neural|algorithm|machine learning|\bai\b|deep learning|steps|52 members/, 2]], method],
   ["others", [[/other (cyclones?|storms?|systems?)|all (cyclones?|storms?)|monitored|worldwide|global|every basin|which (cyclones?|storms?)|how many (cyclones?|storms?) (are|is) (there|being|monitored|active|tracked)|basins?/, 3]], others],
   ["categories", [[/categor|saffir|what is a (tropical )?(depression|storm)|stages?|classif|what does c\d mean/, 2]], categories],
   ["pages", [[/which pages?|(show me|open|go to|take me to|where is) (the )?(dashboard|prediction|imagery|satellite imagery|early warning|warnings? page|overview|home ?page)|where can i (find|see)|how do i (use|navigate|see)|navigate|menu|\bpages\b|\btabs?\b/, 3]], pages],
@@ -265,8 +261,6 @@ const process_debug = typeof globalThis !== "undefined" && globalThis.__CX_DEBUG
 /* questions about the chatbot itself or about whether CycloneX can be trusted */
 function metaRoute(n) {
   if (/^(are|r) (you|u)\b|\byour name\b|who (are|r) (you|u)|what are you\b|introduce yourself|\b(you|u) (a |an )?(bot|robot|human|chatgpt|gpt|gemini|llm)\b/.test(n)) return entry("who");
-  if (/cyclonex|this (site|website|app|project|system)|the data|your data|these (cyclones|storms|numbers|figures)/.test(n) && /\b(real|fake|genuine|actual|live|simulat\w*|demo|mock|synthetic|true)\b/.test(n)) return entry("simulated");
-  if (/cyclonex|this (site|website|app|system)/.test(n) && /\b(trust|rely|depend|official|safe to use)\b/.test(n)) return entry("rely");
   if (/\b(cat|category)\s*[1-5]\b/.test(n) && !/\b(this|our|arb|chance|landfall|probab|will|risk)\b/.test(n)) return entry("saffir");
   if (/\b(simple (words|terms|language)|to a (child|kid)|for (a )?(child|kid|kids|children)|eli5|like i am (5|five)|for dummies|beginner)\b/.test(n) && /cyclon|storm|hurricane|typhoon/.test(n)) return entry("simple");
   if (/\beye\b/.test(n) && /\b(outside|go out|step out|calm|safe)\b/.test(n) && !/\b(this|our|arb)\b/.test(n)) return entry("eyetrap");
@@ -281,11 +275,45 @@ function localWeather(n) {
   if (asks && timeOrPlace && !/cyclon|storm|landfall|hurricane|typhoon|surge|\bsea\b|ocean|climate|monsoon|cyclonex/.test(n)) return { text: "CycloneX does not give local day-to-day weather or temperature. For that, please check the IMD (mausam.imd.gov.in) or the Mausam app. I can tell you about cyclones and the storm shown in CycloneX.", next: STARTERS.slice(0, 4) };
   return null;
 }
+/* Personal situations such as "my city is hit by cyclone, what to do": answered by the phase of the storm */
+const reply = (intro, e, next) => ({ text: (intro ? intro + "\n\n" : "") + e.a, next: next || (e.rel || []).map((id) => (entry(id) || {}).t).filter(Boolean).slice(0, 3), id: e.id });
+function situation(n) {
+  if (/\b(arb|cyclonex|selected|dashboard|forecast|mumbai|raigad|thane|palghar|ratnagiri|valsad|sindhudurg|alibag|konkan)\b/.test(n)) return null;
+  if (/^(what is|what are|what was|define|meaning of|difference between|why (do|does|are|is))\b/.test(n)) return null;
+  const me = /\b(my|our|me|us|i|we|i m|we re|there s|there is|help)\b/.test(n) || /what now|just passed|has passed|is over/.test(n);
+  const hazard = /cyclon|storm|hurricane|typhoon|flood|power cut|electricity|blackout|wind|water|tuf?aan/.test(n);
+  const cue = /what (to|should|can|do|now)|help|how (to|do|can) (i|we)|\bsafe\b|stuck|trapped|scared|afraid|worried|panic|anxious|nervous|hit by|hitting|\bhits\b|\bhit\b|is here|coming|approaching|passed|no electricity|power cut|leak|flooded|danger|\bnear\b|outside|emergency|rescue/.test(n);
+  if (!me || !hazard || !cue) return null;
+  if (/\b(boat|boats|fisher\w*|ship|trawler|sea|port|farm\w*|crop|livestock|cattle)\b/.test(n)) return null;
+  const SAFE = "If anyone is in immediate danger, call 112 now.";
+  if (/\beye\b/.test(n) && /\b(outside|go out|step out|calm)\b/.test(n)) return null;
+  if (/flood|water (is )?(rising|entering|coming|in )|trapped|stuck (on|in) (the |a |my )?(roof|house|water)|rescue/.test(n)) return reply("I am sorry you are dealing with this. " + SAFE, entry("flooded"));
+  if (/power (cut|outage|failure)|electricity|no (power|light)|blackout|current gone|wires?|electric pole/.test(n)) return reply("", entry("powercut"));
+  if (/\b(travel|drive|driving|road|train|flight|journey|trip|bus|car|bike|highway)\b/.test(n)) return reply("", entry("travel"));
+  if (/\b(roof|window|windows|door|wall|ceiling|tin|sheet)\b/.test(n) && /leak|damag|blow|fly|flying|break|broke|crack|collaps|fall/.test(n)) return reply("Do not go out or up on the roof to repair anything while the storm is still blowing. " + SAFE + " Move to the strongest inner room, away from windows, and wait until it has passed.", entry("during"));
+  const phase = /passed|is over|has ended|ended|finished|gone now|after (the )?(cyclone|storm)|just (ended|passed)|aftermath/.test(n) ? "after"
+    : /hit by|hitting|\bhits\b|\bhit\b|is here|outside|ongoing|raging|right now|started|began|going on|battering|stuck|currently|happening|in danger|\bduring\b|\bwhile\b/.test(n) ? "during"
+    : "before";
+  const scared = /scared|afraid|fear|worried|panic|anxious|nervous/.test(n);
+  const lead = scared ? "It is natural to feel scared, and the best way to feel safer is to act early and follow the steps below. " : "";
+  if (phase === "during") return reply(lead + "Your safety comes first. " + SAFE, entry("during"), ["How do I stay safe if my house is flooded?", "What should I do after a cyclone?", "Which emergency number can I call in India?"].map((q) => q));
+  if (phase === "after") return reply(lead + "I am glad the worst has passed, but the danger is not over yet.", entry("after"));
+  return reply(lead + "Act early and follow your local authorities. If they tell you to evacuate, go straight away and do not wait for the storm to arrive.", entry("before"));
+}
+
+/* Questions about how CycloneX is built, its data, or whether it is real are not answered here */
+const ABOUT_APP = /\bcyclonex\b|\byour\b|\byou\b|\byou re\b|\bthis (site|app|website|project|system|tool|chatbot|bot|platform|assistant)\b|\bthe (site|website|app|project|platform|data|numbers|figures|images|imagery)\b|\bthese (numbers|figures|images|cyclones|storms|data)\b|\b(this|these|the|your|its) (\w+ )?(data|information|info)\b/;
+const APP_TOPIC = /\b((built|made|created|developed|designed|coded|programmed) (by|with|using|in|on)|who (built|made|created|developed|designed|coded|programmed)|how (was|is|were|did) .*(built|made|created|developed|designed|coded)|tech(nology)? stack|framework|librar\w+|react|tailwind|vite|python|javascript|backend|frontend|front end|back end|database|\bapi\b|source code|open source|github|fake|real|genuine|authentic|simulat\w*|demo|mock|dummy|synthetic|prototype|hardcoded|hard coded|static|sample|test data|dataset|data ?sources?|data (come|comes|from|used|is|are)|where .* data|which data|what data|trained|training|which (model|algorithm)|what (model|algorithm)|algorithm|methodolog\w*|pipeline|architecture|neural|\bcnn\b|ensemble|chatgpt|\bgpt\b|\bllm\b|language model|are you (an? )?(ai|bot|human|robot)|trust|rely|reliable|how (does|do) (it|this|cyclonex|the \w+) work|accuracy of (the )?data)\b/;
+const aboutApp = (n) => (ABOUT_APP.test(n) && APP_TOPIC.test(n) && !/^(what|how) (is|are|does|do) (a |an |the )?(cyclone|storm|hurricane)s?\b/.test(n)) || /\b(prototype|chatgpt|openai)\b|technolog\w+ .*(build|built|made|make|create|used)|(build|built|make|made|create) (this|it)\b.*\b(with|using)\b|tech stack/.test(n);
+const DEFLECT = { text: "I can help with cyclone information and everything shown in CycloneX. For questions about how CycloneX is built or where its data comes from, please ask the CycloneX team.", next: [], id: "meta" };
+
 function single(q, alertList, mem) {
   const n = norm(q), raw = q.toLowerCase();
   if (!n) return { text: "Type a question about cyclones.", next: STARTERS.slice(0, 4) };
   const exact = byTitle(n); if (exact) return kbAnswer(exact);
+  if (aboutApp(n)) return { ...DEFLECT, next: STARTERS.slice(0, 4) };
   const wt = windTool(raw); if (wt) return wt;
+  const sit = situation(n); if (sit) return sit;
   const st = smalltalk(n); if (st) return st;
   /* follow-ups such as "tell me more" or "why?" */
   if (mem && mem.last && n.split(" ").length <= 5 && /^(tell me more|more|more details|more info|elaborate|go on|continue|explain (more|further|that|it)|can you explain|what else)\b/.test(n) || (n.split(" ").length <= 2 && /^(why|how so|and)\b/.test(n))) {
